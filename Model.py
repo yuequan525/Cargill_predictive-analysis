@@ -4,6 +4,7 @@
 # In[ ]:
 
 import numpy as np
+import random
 from sklearn.metrics import mean_squared_error
 from sklearn.metrics import r2_score
 from sklearn import neighbors
@@ -43,6 +44,7 @@ class Model(object):
         # Train random forest with KFold cross-validation
         rmse_list,r2_list=[],[]
         # configure the cross-validation procedure
+        random.seed(30)
         cv_outer = KFold(n_splits=10, shuffle=True, random_state=1)
         
         for train_ix, test_ix in cv_outer.split(X):
